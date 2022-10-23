@@ -1,0 +1,25 @@
+<form [formGroup]="favoriteForm">
+
+    <div>
+        <h4>Modificar favorito</h4>
+    </div>
+    <hr>
+
+    <mat-form-field class="field" appearance="legacy">
+        <mat-label>Alias</mat-label>
+        <input matInput formControlName="alias" placeholder="Alias">
+        <mat-error *ngIf="favoriteForm.invalid">Este campo es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="field" appearance="legacy">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Nombre">
+      </mat-form-field>
+
+      <mat-form-field class="field" appearance="legacy">
+        <mat-label>Fecha</mat-label>
+        <input matInput formControlName="createdAt" placeholder="Fecha">
+      </mat-form-field>
+
+      <button mat-raised-button class="field" color="primary" (click)="modifyFavorite()">Modificar</button>
+</form>

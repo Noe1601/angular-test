@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>PokeApp</span>
+    <span class="example-spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Menu (click aqui)</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+        <button mat-menu-item (click)="goToList()">Listado de pokemons</button>
+        <button mat-menu-item (click)="goToFavorite()">Favoritos</button>
+    </mat-menu>
+
+</mat-toolbar>

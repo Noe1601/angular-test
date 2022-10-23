@@ -1,0 +1,41 @@
+<div class="table-list">
+  <mat-card>
+
+    <div>
+      <h4>
+        Listado de pokemons
+      </h4>
+    </div>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="Nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Url Detalle">
+          <th mat-header-cell *matHeaderCellDef> Url Detalle </th>
+          <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button (click)="setFavorites(element)">
+              <mat-icon>favorite_border</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </mat-card>
+</div>

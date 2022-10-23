@@ -1,0 +1,52 @@
+<div class="table-list">
+    <mat-card>
+
+        <div>
+            <h4>
+              Listado de favoritos
+            </h4>
+          </div>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+          
+              <ng-container matColumnDef="Nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="Alias">
+                <th mat-header-cell *matHeaderCellDef> Alias </th>
+                <td mat-cell *matCellDef="let element"> {{element.alias}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <button mat-button (click)="update(element)">
+                    <mat-icon>update</mat-icon>
+                  </button>  
+
+                  <button mat-button (click)="deleteFavorite(element)">
+                    <mat-icon>restore_from_trash</mat-icon>
+                  </button>  
+                </td>
+              </ng-container>
+          
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                           showFirstLastButtons 
+                           aria-label="Select page of periodic elements">
+            </mat-paginator>
+          </div>
+    </mat-card>
+</div>
