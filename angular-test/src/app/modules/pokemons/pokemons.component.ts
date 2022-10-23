@@ -32,6 +32,10 @@ export class PokemonsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getPokemons();
+  }
+
+  getPokemons() {
 
     if(this._storageService.keyExistsInLocalStorage('favorites')) {
       this.favorites = this._storageService.getItemFromLocalStorage('favorites');
@@ -39,12 +43,7 @@ export class PokemonsComponent implements OnInit {
     else{
       this.favorites = [];
     }
-
-    this.getPokemons();
-  
-  }
-
-  getPokemons() {
+    
     this._pokemonService.getAllPokemons(100000,0).subscribe(data => {
       this.pokemons = data.results;
       this.ngAfterViewInit();
